@@ -33,6 +33,9 @@ sha256sums=('SKIP'
 package() {
   mkdir -p "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
   cp -r WSL2-Linux-Kernel/drivers/hv/dxgkrnl/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp WSL2-Linux-Kernel/include/uapi/misc/d3dkmthk.h "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  sed -e "s/<uapi\/misc\/d3dkmthk.h>/\"d3dkmthk.h\"/" \
+      -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dxgkrnl.h
   install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
