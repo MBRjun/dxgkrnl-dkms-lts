@@ -1,0 +1,11 @@
+--- /home/localo/dxgkrnl-dkms-git/pkg/dxgkrnl-dkms-git/usr/src/dxgkrnl-5.6.rc2.r77380.g918dbaa9fa4a/dxgvmbus.c  2021-12-05 03:17:39.000000000 +0000
++++ dxgvmbus.c  2021-12-06 13:57:29.585661332 +0000
+@@ -360,7 +360,7 @@
+        u32 packet_length = 0;
+
+        dev_dbg(dxgglobaldev, "%s %p", __func__, channel->adapter);
+-       foreach_vmbus_pkt(desc, channel->channel) {
++       for (desc = hv_pkt_iter_first_raw(channel->channel); desc; desc = hv_pkt_iter_next(channel->channel, desc)) {
+                packet_length = hv_pkt_datalen(desc);
+                dev_dbg(dxgglobaldev, "next packet (id, size, type): %llu %d %d",
+                        desc->trans_id, packet_length, desc->type);
