@@ -1,7 +1,7 @@
 # Maintainer: Vic Luo <vicluo96(at)gmail.com>
 
 _pkgbase=dxgkrnl
-pkgname=dxgkrnl-dkms-git
+pkgname=dxgkrnl-dkms-lts-git
 pkgdesc="DirectX linux drivers for GPU-PV (dkms)"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/WSL2-Linux-Kernel/"
@@ -10,13 +10,13 @@ depends=('dkms')
 makedepends=('git' 'linux-headers')
 provides=("dxgkrnl")
 conflicts=("dxgkrnl")
-pkgver=5.6.rc2.r77380.g918dbaa9fa4a
+pkgver=6.1.202308.1
 pkgrel=1
 # epoch 0: ver number has "v" as the prefix
 epoch=1
 
 source=(
-        "git+https://github.com/microsoft/WSL2-Linux-Kernel.git#branch=linux-msft-wsl-5.10.y"
+        "git+https://github.com/microsoft/WSL2-Linux-Kernel.git#branch=linux-msft-wsl-6.1.y"
         "dkms.conf"
         "extra-defines.h"
         "fix_recv.patch"
